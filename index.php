@@ -17,6 +17,9 @@
 
 </li>
 <li><a href="ListFckups.php">Get list of students having failed 2+ quarters</a>
+<li><a href="ListAllStudents.php">List all students</a>
+
+</li>
 
 </li>
 <li><a href="#">Upload data</a>
