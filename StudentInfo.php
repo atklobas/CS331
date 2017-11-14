@@ -23,7 +23,6 @@
     include_once('util.php');
     include_once("MysqlLogin.php");
     
-    $conn = mysqli_connect($servername, $username, $password,$db);
     tabulate_results($conn->query(
         "SELECT *
     FROM Students
