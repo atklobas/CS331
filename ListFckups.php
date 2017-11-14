@@ -15,12 +15,7 @@
 
 <?php
     include_once('util.php');
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $db='hs_programs';
-    
-    $conn = mysqli_connect($servername, $username, $password,$db);
+    include_once("MysqlLogin.php");
     tabulate_results($conn->query(
         "select Students.SID, Students.FirstName,Students.LastName from Students join GPA on Students.SID=GPA.SID  where GPA<2 group by Students.SID,FirstName,LastName  having count(*)>1;")
         );

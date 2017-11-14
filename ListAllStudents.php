@@ -15,12 +15,7 @@
 
 <?php
     include_once('util.php');
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $db='hs_programs';
-    
-    $conn = mysqli_connect($servername, $username, $password,$db);
+    include_once("MysqlLogin.php");
     tabulate_results($conn->query(
         "select * from Students join Address on Students.AddressCode = Address.AddressCode;")
         );

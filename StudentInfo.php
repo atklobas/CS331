@@ -21,10 +21,7 @@
 </form>
 <?php }else{
     include_once('util.php');
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $db='hs_programs';
+    include_once("MysqlLogin.php");
     
     $conn = mysqli_connect($servername, $username, $password,$db);
     tabulate_results($conn->query(
