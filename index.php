@@ -3,6 +3,7 @@ error_reporting( E_ALL );
 $request=parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $request =substr($request, strpos($request, 'index.php'));
 $request = explode('/',$request);
+
 $function=$request[1];
 if(empty($function)){
     $function="index";

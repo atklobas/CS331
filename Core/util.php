@@ -1,5 +1,16 @@
 <?php
 //this takes the results from a mysql query and turns it into an html table
+
+function printURL(){
+    
+    $request=parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $request =substr($request,0, strpos($request, 'index.php'));
+    
+    
+    
+    echo parse_url($_SERVER['REQUEST_URI'], PHP_URL_HOST);
+    echo $request.'index.php/';
+}
 function tabulate_results($result){
     
     if ($result->num_rows > 0) {

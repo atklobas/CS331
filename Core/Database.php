@@ -7,7 +7,7 @@ class database{
         $this->con=$conn;
     }
     public function  test(){
-        cout<<"test";
+    //    cout<<"test";
     }
     public function listAllStudents(){
         return $this->con->query(  "select * from Students join Address on Students.AddressCode = Address.AddressCode;");
@@ -21,22 +21,13 @@ class database{
         WHERE sid = '$sid'");
     }
     
-    public function getStudentInfo($sid){
-        mysqli_escape_string($this->con, $sid);
-        return $this->con->query("SELECT *
-        FROM Notes
-        WHERE sid = '$sid'");
-    }
-    
     public function getStudentNotes($sid){
         mysqli_escape_string($this->con, $sid);
         return $this->con->query("SELECT *
         FROM Notes
         WHERE sid = '$sid'");
     }
-    
-    
-    
+   
     /**
      * -- 	Select all info on specific student by SID
 SELECT *
@@ -121,3 +112,4 @@ WHERE GPA.QtrYear LIKE 'B78_';
 //   private $con=$GLOBALS['conn'];
     
 }
+

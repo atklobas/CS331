@@ -1,4 +1,5 @@
 <?php
+
 include_once('Core/Database.php');
 class controller{
     private $db;
