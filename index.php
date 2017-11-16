@@ -13,18 +13,11 @@
 </div>
 <div>
 <ul>
-<li><a href="StudentInfo.php">Get info about specific student</a>
-
-</li>
-<li><a href="ListFckups.php">Get list of students having failed 2+ quarters</a>
-<li><a href="ListAllStudents.php">List all students</a>
-
-</li>
-
-</li>
-<li><a href="#">Upload data</a>
-
-</li>
+    <li><a href="StudentInfo.php">Get info about specific student by SID</a></li>
+    <li><a href="StudentInfoLastname.php">Get info about specific student by Last Name</a></li>
+    <li><a href="ListFckups.php">Get list of students having failed 2+ quarters</a></li>
+    <li><a href="ListAllStudents.php">List all students</a></li>
+    <li><a href="#">Upload data</a></li>
 
 
 
