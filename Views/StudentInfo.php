@@ -19,25 +19,29 @@
 <label for="sid">Student ID</label><input type="text" name="sid" id="sid"></input>
 <input type="submit"></input>
 </form>
+
 <?php }else{
     include_once('util.php');
     include_once("MysqlLogin.php");
+    
+    $sid=$_GET['sid'];
+    $sid=mysqli_escape_string($conn,$sid);
     
     tabulate_results($conn->query(
         "SELECT *
     FROM Students
     JOIN  Address on Students.AddressCode = Address.AddressCode
-    WHERE sid = '{$_GET[sid]}';")
+    WHERE sid = '$sid';")
         );
     echo '<br/>';
     tabulate_results($conn->query(
-        "select * from Student_Appeal s join Appeal_Status a on s.AppealStatusCode=a.AppealStatusCode where SID='{$_GET[sid]}';")
+        "select * from Student_Appeal s join Appeal_Status a on s.AppealStatusCode=a.AppealStatusCode where SID='$sid';")
     );
     echo '<br/>';
     tabulate_results($conn->query(
         "SELECT *
 FROM Notes
-WHERE SID = '{$_GET[sid]}';")
+WHERE SID = '$sid';")
     );
 }?>
 
