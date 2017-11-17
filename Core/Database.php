@@ -20,7 +20,7 @@ class database{
         return $this->con->query("SELECT *
         FROM Students
         JOIN  Address on Students.AddressCode = Address.AddressCode
-        JOIN Highschool on Highschool.HSCode = Students.HSCode
+        JOIN HighSchool on HighSchool.HSCode = Students.HSCode
         WHERE sid = '$sid'");
     }
     
@@ -56,7 +56,7 @@ class database{
         WHERE StatusCode = \'003\';');
     }
     public function listFailing(){
-        return $this->con->query("select Students.SID, Students.FirstName,Students.LastName from Students join GPA on Students.SID=GPA.SID  where GPA<2 group by Students.SID,FirstName,LastName  having count(*)>1;");
+        return $this->con->query("select Students.SID, Students.FirstName,Students.LastName, count(*) as QuartersFailed from Students join GPA on Students.SID=GPA.SID  where GPA<2 group by Students.SID,FirstName,LastName  having count(*)>1;");
     }
    
     /**

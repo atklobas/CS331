@@ -31,7 +31,15 @@ class controller{
         $this->view('ListFckups',array('theList'=>$data,'test'=>"hello world"));
     }   
     public function StudentInfo(){
-        $this->view('StudentInfo');
+        $sid=$_GET['sid'];
+        $data=array();
+        if(!empty($sid)){
+        
+        $data['student']=$this->db->getStudentInfo($sid);
+        $data['appeals']=$this->db->getStudentAppeals($sid);
+        $data['notes']=$this->db->getStudentNotes($sid);
+        }
+        $this->view('StudentInfo',$data);
     }
     public function StudentInfoLastName(){
         $this->view('StudentInfoLastName');
