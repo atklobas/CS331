@@ -14,6 +14,6 @@
         "SELECT *
     FROM Students
     JOIN  Address on Students.AddressCode = Address.AddressCode
-    WHERE LastName = '{$_GET[LastName]}';")
+    WHERE LastName like '%{$_GET[LastName]}%';")
         );
 }?>
