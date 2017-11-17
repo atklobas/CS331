@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 	    <title>Sample Page for HS-Programs</title>
-	    <link href="http://localhost/frontEnd/styles.css" rel="stylesheet" type="text/css"/>
+	    <link href="<?php printURL(FALSE)?>styles.css" rel="stylesheet" type="text/css"/>
 	</head>
 <body>
 <div class="banner">
