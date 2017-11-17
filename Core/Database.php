@@ -10,7 +10,9 @@ class database{
     //    cout<<"test";
     }
     public function listAllStudents(){
-        return $this->con->query(  "select * from Students join Address on Students.AddressCode = Address.AddressCode;");
+        return $this->con->query(  "select * from Students 
+            join Address on Students.AddressCode = Address.AddressCode 
+            left JOIN HighSchool on HighSchool.HSCode = Students.HSCode;");
     }
     
     public function getStudentInfo($sid){
@@ -18,6 +20,7 @@ class database{
         return $this->con->query("SELECT *
         FROM Students
         JOIN  Address on Students.AddressCode = Address.AddressCode
+        JOIN Highschool on Highschool.HSCode = Students.HSCode
         WHERE sid = '$sid'");
     }
     
@@ -26,6 +29,31 @@ class database{
         return $this->con->query("SELECT *
         FROM Notes
         WHERE sid = '$sid'");
+    }
+    public function getStudentAppeals($sid){
+        mysqli_escape_string($this->con, $sid);
+        return $this->con->query(
+            "select * from Student_Appeal s join Appeal_Status a on s.AppealStatusCode=a.AppealStatusCode where SID='$sid';");
+    }
+    //-- 	Select all students on probation
+    public function getStudentsOnProbation(){
+        return $this->con->query('SELECT *
+        FROM Students
+        WHERE StatusCode = \'002\';');
+    }
+    //-- 	Count number of students on probation
+    
+    public function countStudentsOnProbation(){
+        return $this->con->query('SELECT COUNT(*)
+        FROM Students
+        WHERE StatusCode = \'002\';');
+    }
+    
+    //-- 	Select all students on probation with active appeal
+    public function getStudentsOnAppeal(){
+        return $this->con->query('SELECT *
+        FROM Students
+        WHERE StatusCode = \'003\';');
     }
    
     /**
@@ -44,14 +72,8 @@ FROM Students
 WHERE FirstName = 'Alex'
 AND Lastname = 'Kourkoumelis';
 
--- 	Select all students on probation
-SELECT *
-FROM Students
-WHERE StatusCode = '002';
--- 	Count number of students on probation
-SELECT COUNT(*)
-FROM Students 
-WHERE StatusCode = '002';
+
+
 -- 	Select all students on probation with appeal active
 	SELECT *
 	FROM Students
