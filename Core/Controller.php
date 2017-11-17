@@ -23,4 +23,10 @@ class controller{
         $data=$this->db->listAllStudents();
         $this->view('ListAllStudents',array('results'=>$data));
     }
+    public function ListFckups(){
+        $data=$this->db->listFailing();
+        
+        
+        $this->view('ListFckups',array('theList'=>$data,'test'=>"hello world"));
+    }   
 }

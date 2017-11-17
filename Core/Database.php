@@ -55,6 +55,9 @@ class database{
         FROM Students
         WHERE StatusCode = \'003\';');
     }
+    public function listFailing(){
+        return $this->con->query("select Students.SID, Students.FirstName,Students.LastName from Students join GPA on Students.SID=GPA.SID  where GPA<2 group by Students.SID,FirstName,LastName  having count(*)>1;");
+    }
    
     /**
      * -- 	Select all info on specific student by SID
