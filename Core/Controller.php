@@ -23,4 +23,10 @@ class controller{
         $data=$this->db->listAllStudents();
         $this->view('ListAllStudents',array('results'=>$data));
     }
+    public function StudentInfo(){
+        $this->view('StudentInfo');
+    }
+    public function StudentInfoLastName(){
+        $this->view('StudentInfoLastName');
+    }
 }
