@@ -58,6 +58,15 @@ class database{
     public function listFailing(){
         return $this->con->query("select Students.SID, Students.FirstName,Students.LastName, count(*) as QuartersFailed from Students join GPA on Students.SID=GPA.SID  where GPA<2 group by Students.SID,FirstName,LastName  having count(*)>1;");
     }
+    public function add($data){
+        $this->con->query(
+            "INSERT INTO Students(SID INT(9), FirstName CHAR(255) NOT NULL, DayPhone INT(10) NOT NULL, 
+                LastName CHAR(255) NOT NULL, EveningPhone INT(10) NOT NULL, MiddleName CHAR(255), 
+                    Email CHAR(255), GradYear INT(4), StatusCode INT(2) NOT NULL, HSCode INT(3) NOT NULL, 
+                    AddressCode INT(3) NOT NULL)
+            VALUES('$data[0]','$data[1]','$data[2]','$data[3]','$data[4]','$data[5]','$data[6]',
+            '$data[7]','$data[8]','$data[9]','$data[10]','$data[11]','$data[12]','$data[13]')");
+    }
    
     /**
      * -- 	Select all info on specific student by SID

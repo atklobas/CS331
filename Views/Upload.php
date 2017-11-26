@@ -1,5 +1,5 @@
 <?php if(is_null($_GET['file_loc'])){?>
-    <form action="StudentInfo.php", method="get">
+    <form action="Upload.php", method="get">
         <label for="file_loc">CSV File Location to add students: </label><input type="file" name="file_loc" id="file_loc" accept=".csv"></input>
         <input type="submit" id="submit"></input>
     </form>
