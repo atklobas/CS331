@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php if(is_null($_GET['file_loc'])){?>
     <form action="Upload.php", method="get">
         <label for="file_loc">CSV File Location to add students: </label><input type="file" name="file_loc" id="file_loc" accept=".csv"></input>
@@ -19,3 +20,12 @@
         fclose($file);
     }
 ?>
+=======
+<?php
+/**
+ * Created by PhpStorm.
+ * User: super
+ * Date: 19-Nov-17
+ * Time: 22:40
+ */
+>>>>>>> fa2dec7720de0300d88b79a0d2a351d1143149b7

@@ -1,7 +1,5 @@
-
-
 <?php if(is_null($_GET['LastName'])){?>
-<form action="<?php printURL()?>StudentInfoLastName" , method="get">
+<form action="<?php printURL()?>StudentInfoLastName" method="get">
 
 <label for="LastName">Student Last Name</label><input type="text" name="LastName" id="LastName"></input>
 <input type="submit"></input>

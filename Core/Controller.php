@@ -44,7 +44,12 @@ class controller{
     public function StudentInfoLastName(){
         $this->view('StudentInfoLastName');
     }
+<<<<<<< HEAD
     public function Upload_data($in){
         $this->db->add($in);
+=======
+    public function Upload(){
+        $this->view('Upload');
+>>>>>>> fa2dec7720de0300d88b79a0d2a351d1143149b7
     }
 }
