@@ -31,7 +31,12 @@ function tabulate_results($result){
         <tr>
         	<?php 
             foreach($row as $key => $value){
+                if($key=='SID'){
+                    echo "<td><a href=".printURL(FALSE)."StudentInfo/$value>$value</a></td>";
+                }else{
+                    
                 echo "<td>$value</td>";
+                }
             }
             ?>
         </tr>

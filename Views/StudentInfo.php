@@ -1,5 +1,5 @@
 
-<?php if(is_null($_GET['sid'])){?>
+<?php if(is_null($student)){?>
 <form action="<?php printURL()?>StudentInfo" method="get">
 
 <label for="sid">Student ID</label><input type="text" name="sid" id="sid"></input>

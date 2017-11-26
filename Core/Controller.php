@@ -15,7 +15,6 @@ class controller{
         }
         include("Views/{$name}.php");
     }
-    
     public function index(){
         $this->view('index');
     }
@@ -25,15 +24,13 @@ class controller{
     }
 
     public function ListFckups(){
-        $data=$this->db->listFailing();
-        
-        
+        $data=$this->db->listFailing();  
         $this->view('ListFckups',array('theList'=>$data,'test'=>"hello world"));
     }   
-    public function StudentInfo(){
-        $sid=$_GET['sid'];
+    public function StudentInfo($sid=null){
+        $sid=!is_null($sid)?$sid:$_GET['sid'];
         $data=array();
-        if(!empty($sid)){
+        if(!is_null($sid)){
             $data['student']=$this->db->getStudentInfo($sid);
             $data['appeals']=$this->db->getStudentAppeals($sid);
             $data['notes']=$this->db->getStudentNotes($sid);
