@@ -43,5 +43,7 @@ class controller{
     public function StudentInfoLastName(){
         $this->view('StudentInfoLastName');
     }
-
+    public function Upload(){
+        $this->view('Upload');
+    }
 }
