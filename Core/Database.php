@@ -21,6 +21,7 @@ class database{
         FROM Students
         JOIN  Address on Students.AddressCode = Address.AddressCode
         JOIN HighSchool on HighSchool.HSCode = Students.HSCode
+        JOIN Enrollment_Status on Enrollment_Status.StatusCode=Students.StatusCode
         WHERE sid = '$sid'");
     }
     

@@ -34,10 +34,9 @@ class controller{
         $sid=$_GET['sid'];
         $data=array();
         if(!empty($sid)){
-        
-        $data['student']=$this->db->getStudentInfo($sid);
-        $data['appeals']=$this->db->getStudentAppeals($sid);
-        $data['notes']=$this->db->getStudentNotes($sid);
+            $data['student']=$this->db->getStudentInfo($sid);
+            $data['appeals']=$this->db->getStudentAppeals($sid);
+            $data['notes']=$this->db->getStudentNotes($sid);
         }
         $this->view('StudentInfo',$data);
     }
