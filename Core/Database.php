@@ -61,12 +61,40 @@ class database{
     }
 
 
-    public function addStudent($data){
-        return $this->con->query("INSERT INTO Students(SID, FirstName, DayPhone, LastName, EveningPhone, MiddleName, 
-        Email, GradYear, StatusCode, HSCode, AddressCode)
-            VALUES('{$data[0]}','{$data[1]}','{$data[2]}','{$data[3]}',{'{$data[4]}','{$data[5]}','{$data[6]}',
-            '{$data[7]}','{$data[8]}','{$data[9]}',{'{$data[10]}','{$data[11]}','{$data[12]}','{$data[13]}';)");
+    public function addStudent($data)
+    {
+        #Assumption is made that 1. There will be all information as seen from
+        #the last page of the excel handout will be (aka on databasesnotes.pdf
+        #on 10/13 email) and any remaining attributes not seen will be added as
+        #an extra attribute at the end (like StatusCode).
+        #Trigger should handle the duplicate add and the address code should
+        $name = explode('_', $data[3]);
+        return $this->con->query("
+            IF EXISTS(SELECT SID FROM Students WHERE SID={$data[0]})
+            THEN
+                (DELETE FROM Address 
+                WHERE AddressCode={$data[10]} AND 2<(SELECT COUNT(*) FROM Students
+                UPDATE Students
+                SET SID={$data[0]}, FirstName='{$name[1]}', DayPhone={$data[5]}, 
+                LastName='{$name[0]}', EveningPhone={$data[6]}, 
+                Email='{$data[4]}', GradYear={$data[12]}, 
+                StatusCode={$data[13]}, HSCode={$data[7]}, 
+                AddressCode={$data[10]})
+            INSERT INTO Students(SID, FirstName, DayPhone, LastName, 
+            EveningPhone, Email, GradYear, StatusCode, HSCode, AddressCode)
+            VALUES({$data[0]}, '{$name[1]}', {$data[5]}, '{$name[0]}', {$data[6]}, 
+            '{$data[4]}', {$data[12]}, 000, {$data[7]}, {$data[10]};)
+        ");
     }
+    public function filterStudents($data)
+    {
+        return $this->con->query("
+            DELETE FROM Students WHERE {$data[0]} NOT IN SID;
+            DELETE FROM Address
+            WHERE AddressCode={$data[10]} AND 2<(SELECT COUNT(*) FROM Students;
+        ");
+    }
+
     /**
      * -- 	Select all info on specific student by SID
 SELECT *
