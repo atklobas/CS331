@@ -72,14 +72,13 @@ class database{
         return $this->con->query("
             IF EXISTS(SELECT SID FROM Students WHERE SID={$data[0]})
             THEN
-                (DELETE FROM Address 
-                WHERE AddressCode={$data[10]} AND 2<(SELECT COUNT(*) FROM Students
-                UPDATE Students
+                (UPDATE Students
                 SET SID={$data[0]}, FirstName='{$name[1]}', DayPhone={$data[5]}, 
                 LastName='{$name[0]}', EveningPhone={$data[6]}, 
                 Email='{$data[4]}', GradYear={$data[12]}, 
                 StatusCode={$data[13]}, HSCode={$data[7]}, 
                 AddressCode={$data[10]})
+			ELSE
             INSERT INTO Students(SID, FirstName, DayPhone, LastName, 
             EveningPhone, Email, GradYear, StatusCode, HSCode, AddressCode)
             VALUES({$data[0]}, '{$name[1]}', {$data[5]}, '{$name[0]}', {$data[6]}, 
