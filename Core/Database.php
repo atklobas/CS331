@@ -6,6 +6,28 @@ class database{
         include_once('Core/MysqlLogin.php');
         $this->con=$conn;
     }
+    public function getStatuses(){
+        return $this->con->query(  "select * from Enrollment_Status;");
+    }
+    public function getHighschools(){
+        return $this->con->query(  "select *  FROM HighSchool;");
+    }
+    public function updateStudent($newInfo){
+        foreach($item as $key => &$value){
+            $value=mysqli_escape_string($this->con, $value);
+        }
+        $q="UPDATE Students SET
+FirstName='{$newInfo[fname]}',
+LastName='{$newInfo[lname]}',
+Email='{$newInfo[email]}',
+DayPhone='{$newInfo[dayPhone]}',
+EveningPhone='{$newInfo[nightPhone]}',
+StatusCode='{$newInfo[StatusCode]}',
+HSCode='{$newInfo[HSCode]}',
+GradYear='{$newInfo[year]}' WHERE SID=$newInfo[sid];";
+        $this->con->query($q);
+        
+    }
     public function  test(){
     //    cout<<"test";
     }

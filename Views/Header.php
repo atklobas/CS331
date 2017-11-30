@@ -7,7 +7,12 @@
 <body>
 <div class="banner">
 <nav>
-<img src="//s.bellevuecollege.edu/g/3/i/bellevuecollege-b.png" class="img-responsive" alt="Bellevue College (with link to home page)">
+<a href="<?php printURL()?>"><img src="<?php printURL(FALSE);?>bellevuecollege.png" class="img-responsive" alt="Bellevue College (with link to home page)"></a>
+
+<form action="<?php printURL()?>StudentInfoLastName"  class="search">
+      <input type="text" placeholder="Search.." name="LastName" />
+      <button type="submit">Submit</button><br/>
+      </form>
 </nav>
 </div>
 <div id="mainContent">

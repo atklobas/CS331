@@ -1,17 +1,17 @@
 <?php
 //this takes the results from a mysql query and turns it into an html table
 
-function printURL($index=TRUE){
-    
+function getURL($index=true){
     $request=parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $request =substr($request,0, strpos($request, 'index.php'));
-    
-//    var_dump(parse_url($_SERVER['REQUEST_URI'], PHP_URL_HOST));
-    echo 'http://';
-    echo $_SERVER['HTTP_HOST'];
-    echo $request;
-    if($index) echo'index.php/';
+    $ret='http://'.$_SERVER['HTTP_HOST'].$request;
+    if($index) $ret.='index.php/';
+    return $ret;
 }
+function printURL($index=TRUE){
+    echo(getURL($index));
+}
+
 function tabulate_results($result){
     
     if ($result->num_rows > 0) {
@@ -32,7 +32,7 @@ function tabulate_results($result){
         	<?php 
             foreach($row as $key => $value){
                 if($key=='SID'){
-                    echo "<td><a href=".printURL(FALSE)."StudentInfo/$value>$value</a></td>";
+                    echo "<td><a href=".getURL()."StudentInfo/$value>".str_pad($value,9,'0',STR_PAD_LEFT)."</a></td>";
                 }else{
                     
                 echo "<td>$value</td>";

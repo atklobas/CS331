@@ -16,4 +16,40 @@ nav{
 }
 #mainContent{
 	margin:30px;
+	width:960;
+}
+nav a{
+	float:left;
+}
+.search{
+	float:right;
+}
+.login{
+	margin:auto;
+}
+fieldset{
+	 -webkit-margin-start: 2px;
+    -webkit-margin-end: 2px;
+    -webkit-padding-before: 0.35em;
+    -webkit-padding-start: 0.75em;
+    -webkit-padding-end: 0.75em;
+    -webkit-padding-after: 0.625em;
+    min-width: -webkit-min-content;
+    border-width: 2px;
+    border-style: groove;
+    border-color: threedface;
+    border-image: initial;
+    width:300px;
+    float: left;
+    margin: 0px 100px 0px 10px;
+}
+label{
+	text-align: left;
+    display: block;
+    font-size: .85em;
+    margin-bottom: -.15em;
+}
+input,select{
+    width: 300px;
+    margin-bottom:1em;
 }
